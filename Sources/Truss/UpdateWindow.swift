@@ -74,7 +74,7 @@ final class UpdateWindow: NSObject, NSWindowDelegate {
     }
 
     func show() {
-        NSApp.activate()
+        NSApp.activateForcefully()
         window.makeKeyAndOrderFront(nil)
         window.orderFrontRegardless()
     }

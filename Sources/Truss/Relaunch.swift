@@ -9,4 +9,9 @@ extension NSApplication {
         try? reopen.run()
         terminate(nil)
     }
+
+    func activateForcefully() {
+        // The polite activate() gets turned down while another app is in front.
+        activate(ignoringOtherApps: true)
+    }
 }

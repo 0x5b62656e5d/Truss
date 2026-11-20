@@ -123,7 +123,7 @@ public final class Updater: NSObject {
 
     @discardableResult
     private static func alert(_ title: String, _ text: String, buttons: [String] = ["OK"]) -> NSApplication.ModalResponse {
-        NSApp.activate()
+        NSApp.activateForcefully()
         let alert = NSAlert()
         alert.messageText = title
         alert.informativeText = text

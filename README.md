@@ -2,7 +2,7 @@
 
 Shared pieces for macOS apps: a settings window with a sidebar of panes, and an updater that installs new versions from GitHub releases.
 
-- `SettingsWindow` shows `SettingsPane`s, each a grouped `Form` with an icon tile in the sidebar. Panes can share a sidebar heading through `group`.
+- `SettingsWindow` shows `SettingsPane`s, each a grouped `Form` with an icon tile in the sidebar. Panes can share a sidebar heading through `group`. An app without a Dock icon gets a menu bar while the window is open.
 - `.about(updater:)` adds an About pane with a Check for Updates button, the app's version, and an automatic-updates toggle.
 - `StartAtLoginToggle` and `SettingsDataSection` (export, import and reset settings) are ready-made rows.
 - `Updater` checks daily, offers the release notes, and replaces the app in place before relaunching it.
