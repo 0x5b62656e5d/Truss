@@ -26,6 +26,10 @@ struct BatterySection: View {
     }
 }
 
+func argument(_ name: String) -> String? {
+    CommandLine.arguments.drop { $0 != name }.dropFirst().first
+}
+
 final class Demo: NSObject, NSApplicationDelegate {
     let settings = SettingsWindow(panes: [
         SettingsPane("General", systemImage: "gearshape.fill") {
@@ -36,14 +40,14 @@ final class Demo: NSObject, NSApplicationDelegate {
         SettingsPane("Battery", systemImage: "bolt.fill", color: .orange, group: "Notifications") {
             BatterySection()
         },
-        .about(updater: Updater(repo: "0x5b62656e5d/Truss")),
+        .about(updater: Updater(repo: argument("--repo") ?? "0x5b62656e5d/Truss")),
     ])
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         let arguments = CommandLine.arguments
         if arguments.contains("--dark") { NSApp.appearance = NSAppearance(named: .darkAqua) }
         if arguments.contains("--light") { NSApp.appearance = NSAppearance(named: .aqua) }
-        settings.show(arguments.drop { $0 != "--pane" }.dropFirst().first)
+        settings.show(argument("--pane"))
     }
 
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
