@@ -15,5 +15,6 @@ let package = Package(
     ],
     targets: [
         .target(name: "Truss", swiftSettings: settings),
+        .testTarget(name: "TrussTests", dependencies: ["Truss"], swiftSettings: settings),
     ]
 )
